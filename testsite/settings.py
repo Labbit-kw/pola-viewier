@@ -92,7 +92,7 @@ DATABASES = {
         'USER': 'root', #root
         'PASSWORD': '1234', #1234
         'HOST': '', #공백으로 냅두면 default localhost
-        'PORT': '' #공백으로 냅두면 default 3306
+        'PORT': '4306' #공백으로 냅두면 default 3306
     }
 }
 
