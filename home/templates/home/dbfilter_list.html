@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% block content %}
+    <h2>DbFilter</h2>
+    <div>
+        <form action="/team_name_url/" method="post">
+    <label for="team_name">Enter name: </label>
+    <input id="team_name" type="text" name="name_field" value="Default name for team.">
+    <input type="submit" value="OK">
+        </form>
+    </div>
+
+    <ul>
+        {% for DbFilter in object_list %}
+            <li>name:{{ DbFilter.name }}</li>
+             <li>{{ DbFilter.mode }}</li>
+            <li>{{ DbFilter.m1_ratio_0_f }}</li>
+             <li>{{ DbFilter.m1_ratio_90_f }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
