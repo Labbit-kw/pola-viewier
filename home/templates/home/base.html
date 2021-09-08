@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <title>Hello, world!</title>
+<!--    <script>-->
+<!--        $(document).ready(function (){  // 사전에 미리 준비 추가안하면 먼저 불러와 져서 작동안됨-->
+<!--                let btnAjax = document.querySelector('.btnAjax');-->
+<!--                 btnAjax.addEventListener('click',e  =>{  //envent 생성-->
+<!--                let title = document.querySelector('.title').value;-->
+<!--                let content = document.querySelector('.content').value;-->
+<!--                let param = {-->
+<!--                    'title' : title,-->
+<!--                    'content' : content,-->
+<!--                }-->
+<!--                $.ajax({-->
+<!--                    // url : '{% url "test" %}', // 통신할 Url 지정  = /test/-->
+<!--                    url : '{% url "test" %}',-->
+<!--                    type : 'POST', // GET, POST, PUT, DELETE-->
+<!--                    headers: {-->
+<!--                     'X-CSRFTOKEN' : '{{ csrf_token }}'-->
+<!--                    },-->
+<!--                    data : JSON.stringify(param), //전송할 데이터 결정-->
+<!--                    success:function(data){ // 데이터 전송 성공시 실행-->
+<!--                        console.log(data);-->
+<!--                    },-->
+<!--                    error: function (){ // 실패시 실행  JSON.stringify()-->
+<!--                        alert('엄... , 너무잘해요!!');-->
+<!--                    }-->
+<!--                });-->
+<!--            });-->
+
+<!--        });-->
+
+
+<!--</script>-->
+  <script>
+      $(document).ready(function(){
+          $('.btnReply').click(function(){
+              $.ajax({
+                  // url:'{% url "dbcall" %}',
+                  url:'http://localhost:8000/dbcall',
+                  type: 'POST',
+                  headers: {'X-CSRFTOKEN' : '{{ csrf_token }}'},
+                  success: function(data){
+                      // JSON.stringify(data)
+                      let str = "<table border='1'>"
+                      let name1 =''
+                      let ip1 =''
+                      let ip2 =''
+                      let ip3 =''
+                      let ip4 =''
+                      str += "<tr><th>이름</th><th>ip1</th><th>ip2</th><th>ip3</th><th>ip4</th></tr>"
+                      $.each(data, function(ind, entry){
+                          	str += "<tr>"
+						    str += "<td>" + entry['name'] + "</td>"
+						    str += "<td>" + entry['ip1'] + "</td>"
+						    str += "<td>" + entry['ip2'] + "</td>"
+                            str += "<td>" + entry['ip3'] + "</td>"
+                            str += "<td>" + entry['ip4'] + "</td>"
+						    str += "</tr>"
+                      })
+                      $.each(data, function(ind, entry) {
+                          name1 += entry['name']
+                            ip1 += entry['ip1']
+                            ip2 += entry['ip2']
+                            ip3 += entry['ip3']
+                            ip4 += entry['ip4']
+                      })
+                      str += "</table>"
+                      $('.showData').append(str)
+                      $('.name1').val(name1)
+                      $('.ip_1').val(ip1)
+                      $('.ip_2').val(ip2)
+                      $('.ip_3').val(ip3)
+                      $('.ip_4').val(ip4)
+                  },
+                  error:function(data){
+                      $('.showData').text('error')
+                        console.log(data);
+                      // alert(JSON.stringify(data))
+                  }
+
+
+              });
+          });
+      });
+  </script>
+<!--<script>-->
+<!--    $(document).ready(function(){-->
+<!--        // let loadip = document.querySelector('.load_ip');-->
+<!--        $('.test').click(function(){-->
+
+<!--            // let loadip = document.getElementById('form');-->
+<!--            // loadip.addEventListener("submit",loadHandler);-->
+<!--  /*function loadHandler(e) {*/-->
+<!--      // e.preventDefault(); // 이동막는 tag-->
+<!--      $.ajax({-->
+<!--          url: '{% url "loadip" %}',-->
+<!--          type: 'post',-->
+<!--          data: $("form").serialize(),-->
+<!--          dataType: 'JSON',-->
+<!--          headers: {'X-CSRFTOKEN' : '{{ csrf_token }}'},-->
+<!--          success: function(data) {-->
+<!--              if (data.msg === 'success'){-->
+<!--                             alert('s');-->
+<!--              }-->
+<!--          },-->
+<!--          error: function(data) {-->
+<!--                    if (data.msg === 'fail')-->
+<!--                             alert('faile');-->
+<!--          }-->
+<!--      })-->
+<!--  // }-->
+<!--    })-->
+<!--        })-->
+<!--</script>-->
+
+
+</head>
+
+<body>
+      test
+<input type="text" class="title" val=''>
+<input type="text" class="content">
+<input type="button" class="btnAjax" value="TEST">
+
+
+<input type="text" class="content">
+
+
+
+<div>
+<input type="submit" class="btnRecall" value="초기화">
+<input type="button" class="btnReply" value="적용">
+
+</div>
+<div class ="showData">
+</div>
+
+<input type="button" class="test" value="test">
+<form method="post" id="form" name="form">
+<!--    {% csrf_token %}-->
+<!--    {{ form.text }}-->
+</form>
+<input type="text" class="name1" val=''>
+<input type="text" class="ip_1" val=''>`
+<input type="text" class="ip_2" val=''>
+<input type="text" class="ip_3" val=''>
+<input type="text" class="ip_4" val=''>
+<!--<form method="POST" id="post-form">-->
+<!--    {% csrf_token %}-->
+<!--    <div class="fieldWrapper" id="the_post">-->
+<!--        {{ form.text }}-->
+<!--    </div>-->
+<!--    <div id="results"></div> &lt;!&ndash; errors go here &ndash;&gt;-->
+<!--    <input type="submit" value="Post" class="tiny_button">-->
+<!--</form>-->
+<!--<table border="1">-->
+<!--    <tr>-->
+<!--    <th>name</th>-->
+<!--    <th>ip1</th>-->
+<!--    <th>ip2</th>-->
+<!--    <th>ip3</th>-->
+<!--    <th>ip4</th>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--    {% if models %}-->
+<!--    {% for model in models%}-->
+<!--    <td>{{model.name}}</td>-->
+<!--    <td>{{model.ip_1}}</td>-->
+<!--    <td>{{model.ip_2}}</td>-->
+<!--    <td>{{model.ip_3}}</td>-->
+<!--    <td>{{model.ip_4}}</td>-->
+<!--    </tr>-->
+<!--    {% endfor %}-->
+<!--{% else %}-->
+<!--    <tr><td colspan="5"> 자료가 없음 </td></tr>-->
+<!--{% endif %}-->
+
+<!--</table>-->
+</body>
+</html>
+
