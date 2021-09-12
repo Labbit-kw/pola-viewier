@@ -98,21 +98,6 @@
             z-index: 1;
             top: -10px;
         }
-        .mid_box{
-            display: flex;
-            margin: 0;
-            flex-wrap: wrap;
-            gap: 1em;
-            padding: 10px;
-            background-color: #f0f0f0;
-        }
-        .bottom_box{
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1em;
-            padding: 10px;
-            background-color: #f0f0f0;
-        }
         .top_tit_box{
             margin: 10px;
             padding: 10px;
@@ -149,37 +134,51 @@
             flex-basis: 150px;
             flex-shrink: 0;
             flex-grow: 0;
-            background-color: #003699;
         }
         .mid_tit_box_L{
+            border: 1px solid black;
             margin: 10px;
             padding: 10px;
             min-height: 350px;
-            min-width: 400px;
+            min-width: 500px;
             flex-basis: 150px;
             flex-shrink: 0;
             flex-grow: 0;
             border-radius: 30px;
-            background-color: #b35858;
+            background-color: #f0f0f0;
         }
         .mid_tit_box_R{
+            border: 1px solid black;
             margin: 10px;
             padding: 10px;
             min-height: 350px;
-            min-width: 400px;
+            min-width: 500px;
             flex-basis: 150px;
             flex-shrink: 0;
             flex-grow: 0;
             border-radius: 30px;
-            background-color: #1b8f44;
+            background-color: #f0f0f0;
         }
         .mid_tit{
             position: relative;
             width: 300px;
             height: 40px;
             z-index: 1;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 30px;
+            background-color: #ffffff;
+            font-family: Inter sans-serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+        .mid_tit2{
+            position: relative;
+            width: 350px;
+            height: 40px;
+            z-index: 1;
             top: 20px;
-            left: 15px;
+            left: 10px;
             text-align: center;
             border: 1px solid black;
             border-radius: 30px;
@@ -196,7 +195,6 @@
             flex-basis: 150px;
             flex-shrink: 0;
             flex-grow: 0;
-            background-color: #003699;
         }
         .item{
             border: 1px solid black;
@@ -205,6 +203,12 @@
             flex-shrink: 1;
             flex-grow: 1;
             background-color: #ffffff;
+            border-radius: 30px;
+        }
+        .item2{
+            border: 1px solid black;
+            min-height: 200px;
+            background-color: #f0f0f0;
             border-radius: 30px;
         }
         .top_box .item{
@@ -390,24 +394,106 @@
                 </div>
             </div>
         </div>
-        <div class="mid_tit_box" style="background-color: aqua">
-            <div class="mid_tit_box_L" style="background-color: #ff6ce6">
+        <div class="mid_tit_box">
+            <div class="mid_tit_box_L">
                 <div class="mid_tit"> 반복 시퀀스</div>
-                <div class="mid_box" style="background-color: blueviolet">
-                    <div class="item" style="background-color: crimson"></div>
-                </div>
+                <form class="row gx-2 align-items-center">
+                    <div class="col-sm-4 d-grid gap-1">
+                        <input type="text" class="form-control text-center" placeholder="0° 지속시간" aria-label="0°">
+                        <input type="text" class="form-control text-center" placeholder="90° 지속시간" aria-label="90°">
+                        <button type="submit" class="btn btn-primary text-center">반복 시퀀스 적용</button>
+                    </div>
+                    <div class="col-sm-4 d-grid gap-1">
+                        <input type="text" class="form-control text-center" placeholder="0° 지속시간" aria-label="0°">
+                        <input type="text" class="form-control text-center" placeholder="x° 지속시간" aria-label="x°">
+                        <input type="text" class="form-control text-center" placeholder="90° 지속시간" aria-label="90°">
+                        <button type="submit" class="btn btn-primary text-center">반복 시퀀스 적용</button>
+                    </div>
+                    <div class="col-sm-4 d-grid gap-1">
+                        <input type="text" class="form-control text-center" placeholder="0° 지속시간" aria-label="0°">
+                        <input type="text" class="form-control text-center" placeholder="23° 지속시간" aria-label="23°">
+                        <input type="text" class="form-control text-center" placeholder="45° 지속시간" aria-label="45°">
+                        <input type="text" class="form-control text-center" placeholder="67° 지속시간" aria-label="67°">
+                        <input type="text" class="form-control text-center" placeholder="90° 지속시간" aria-label="90°">
+                        <button type="submit" class="btn btn-primary text-center">반복 시퀀스 적용</button>
+                    </div>
+                </form>
             </div>
-            <div class="mid_tit_box_R" style="background-color: #ff6ce6">
+            <div class="mid_tit_box_R">
                 <div class="mid_tit">편광 각도 및 전압</div>
-                <div class="mid_box" style="background-color: blueviolet">
-                    <div class="item" style="background-color: crimson"></div>
-                </div>
+                <form class="d-grid gap-2">
+                    <div class="input-group" style="top: 10px; left: 110px">
+                        <span class="input-group-text col-sm-2 text-center d-grid gap-1">23°</span>
+                        <span class="input-group-text col-sm-2 text-center d-grid gap-1">45°</span>
+                        <span class="input-group-text col-sm-2 text-center d-grid gap-1">67°</span>
+                    </div>
+                    <div class="input-group" style="top: 10px">
+                        <span class="input-group-text">고속 전압</span>
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <button type="submit" class="btn btn-primary">적용</button>
+                    </div>
+                    <div class="input-group" style="top: 10px">
+                        <span class="input-group-text">저속 전압</span>
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <button type="submit" class="btn btn-primary">적용</button>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="bot_tit_box">
-            <div class="bot_tit">bottom</div>
-            <div class="bottom_box">
-                <div class="item">content1</div>
+            <div class="mid_tit2">편광 각도 및 전압 조절</div>
+            <div class="item2">
+                <form class="d-grid gap-2 align-items-center">
+                    <div class="input-group"style="top: 30px">
+                        <span class="input-group-text">편광 각도</span>
+                        <input type="text" class="form-control" >
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <button type="submit" class="btn btn-primary">적용</button>
+                    </div>
+                    <div class="input-group" style="top: 30px">
+                        <span class="input-group-text">지속 시간</span>
+                        <input type="text" class="form-control" >
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <button type="submit" class="btn btn-primary">적용</button>
+                    </div>
+                    <div class="input-group" style="top: 30px">
+                        <span class="input-group-text">액정 전압</span>
+                        <input type="text" class="form-control" >
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <input type="text" class="form-control">
+                        <button type="submit" class="btn btn-primary">적용</button>
+                    </div>
+                </form>
             </div>
         </div>
     </article>
