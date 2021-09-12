@@ -8,4 +8,5 @@ urlpatterns = [
 
     path('',views.home,name='home'),
     path('dbcall/', views.list_db_func, name='dbcall'),
+    path('name_mode/', views.name_lode_list, name = 'name_mode'),
 ]

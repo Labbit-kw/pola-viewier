@@ -39,6 +39,19 @@ def list_db_func(request):
     return HttpResponse(json.dumps(datas), content_type = 'application/json')
 
 
+
+def name_lode_list(request):
+    if request.method == 'POST':
+        db_data = Filter.objects.all()
+        data = []
+        for s in db_data:
+            dict_list = {'name':s.name,'mode':s.mode}
+            data.append(dict_list)
+    else:
+        raise Http404("Question does not exist")
+    return HttpResponse(json.dumps(data), content_type = 'application/json')
+
+
 def index(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
